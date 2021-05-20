@@ -1,4 +1,4 @@
-import { Menu, Transition } from '@headlessui/react';
+import { Menu, Popover, Transition } from '@headlessui/react';
 import { BellIcon, SearchCircleIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import React, { Fragment } from 'react';
@@ -35,9 +35,27 @@ export function Header(): JSX.Element {
         </div>
 
         <div className="flex-1 flex-shrink-0 flex-grow-0 ml-4 flex items-center">
-          <button type="button" className="flex-shrink-0 rounded-full p-1 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-600">
-            <BellIcon className="h-6 w-6" />
-          </button>
+          <Popover className="relative">
+            <Popover.Button className="flex-shrink-0 rounded-full p-1 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-600">
+              <BellIcon className="h-6 w-6" />
+
+              <Transition
+                enter="transition ease-out duration-100"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Popover.Panel className="absolute z-10 bg-white origin-top-right right-0 rounded-md shadow-lg mt-3 w-screen max-w-sm">
+                  <div className="p-3 text-gray-700 text-sm text-left">
+                    <p className="font-semibold text-base">You currently have no notifications</p>
+                    <p className="text-sm text-gray-500 mt-2">You&apos;ll get notifications for important events in your organization here.</p>
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </Popover.Button>
+          </Popover>
           <Menu as="div" className="inline-block text-left relative w-8 ml-4">
             {({ open }) => (
               <>
