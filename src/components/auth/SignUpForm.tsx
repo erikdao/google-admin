@@ -168,9 +168,6 @@ export function SignUpForm(props: ISignUpFormProps): JSX.Element {
       >
         Sign up
       </button>
-      <p className="text-center">
-        <a href="/" className="text-sm underline hover:text-gray-900">Forgot password?</a>
-      </p>
     </form>
   );
 }

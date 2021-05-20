@@ -81,11 +81,11 @@ export function LoginForm(props: ILoginFormProps): JSX.Element {
       <button
         type="submit"
         disabled={loading}
-        className="block w-full py-2 px-3 border border-transparent rounded-md text-white font-medium bg-gray-700 shadow-sm sm:text-sm mb-10 hover:bg-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 disabled:opacity-50"
+        className="block w-full py-2 px-3 border border-transparent rounded-md text-white font-medium bg-gray-700 shadow-sm sm:text-sm mb-6 hover:bg-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 disabled:opacity-50"
       >
         Sign in to account
       </button>
-      <p className="text-center">
+      <p className="text-center mt-0">
         <a href="/" className="text-sm underline hover:text-gray-900">Forgot password?</a>
       </p>
     </form>

@@ -6,7 +6,6 @@ function Application(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<h1>Homeplage</h1>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
