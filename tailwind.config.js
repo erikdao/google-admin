@@ -10,7 +10,7 @@ module.exports = {
         'body': ['DM Sans'],
       },
       fontSize: {
-        'base': '1.2rem'
+        'base': '1rem'
       },
       colors: {
         rose: colors.rose,
