@@ -93,6 +93,7 @@ export function SignUpForm(props: ISignUpFormProps): JSX.Element {
             onChange={handleChange}
             aria-invalid="true"
             aria-describedby="email-error"
+            autoComplete="nah"
           />
           {hasError(errors, 'email') && (
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -118,6 +119,7 @@ export function SignUpForm(props: ISignUpFormProps): JSX.Element {
             onChange={handleChange}
             aria-invalid="true"
             aria-describedby="password-error"
+            autoComplete="nah"
           />
           {hasError(errors, 'password') && (
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -146,7 +148,7 @@ export function SignUpForm(props: ISignUpFormProps): JSX.Element {
             placeholder="Confirm password"
             value={data.passwordConfirm}
             onChange={handleChange}
-            autoComplete="off"
+            autoComplete="nah"
           />
           {hasError(errors, 'passwordConfirm') && (
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">

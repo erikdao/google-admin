@@ -21,7 +21,7 @@ export function SignUp(): JSX.Element {
   };
 
   return (
-    <div className="font-sans antialiased text-gray-600 bg-gray-100 h-screen min-h-full flex flex-col relative">
+    <div className="font-sans antialiased text-gray-600 bg-bgray-100 h-screen min-h-full flex flex-col relative">
       <main className="relative z-10 flex-auto flex flex-col items-center justify-center text-sm text-center text-gray-600 py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-sm p-6 bg-white rounded-xl shadow-xl flex flex-col">
           <h1 className="text-center font-semibold text-4xl mb-8">Sign up</h1>
