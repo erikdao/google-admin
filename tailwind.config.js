@@ -20,6 +20,8 @@ module.exports = {
         lime: colors.lime,
         orange: colors.orange,
         bgray: colors.blueGray,
+        amber: colors.amber,
+        emerald: colors.emerald,
       }
     },
   },
