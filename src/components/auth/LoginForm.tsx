@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { TLoginCred } from '../../types';
+import clsx from 'clsx';
+import { ExclamationCircleIcon } from '@heroicons/react/solid';
+import { IErrorProps, TLoginCred, hasError } from '../../types';
 
 interface ILoginFormProps {
+  errors?: IErrorProps[];
+
+  /** Whether the form should be in waiting state */
   loading?: boolean;
+
+  /** Callback invoke when the form is submitted */
   onSubmit: (params: TLoginCred) => Promise<void>;
 }
 
 export function LoginForm(props: ILoginFormProps): JSX.Element {
-  const { loading } = props;
+  const { loading, errors } = props;
 
   const [data, setData] = useState<TLoginCred>({
     email: '', password: '',
@@ -25,6 +32,12 @@ export function LoginForm(props: ILoginFormProps): JSX.Element {
     }
   };
 
+  const fieldClass = (field: string) => clsx(
+    'text-gray-900 ring-opacity-5 appearance-none bg-white rounded-md block w-full px-3 py-2 border shadow ring-1 sm:text-sm mb-4 focus:outline-none',
+    { 'ring-gray-900 border-transparent placeholder-gray-400 focus:border-teal-500 focus:ring-teal-500': !hasError(errors, field) },
+    { 'ring-red-500 border-red-500 placeholder-red-500 focus:border-red-500 focus:ring-red-500': hasError(errors, field) },
+  );
+
   return (
     <form action="#" method="POST" onSubmit={handleSubmit}>
       <input type="hidden" value="true" name="remember" />
@@ -34,12 +47,18 @@ export function LoginForm(props: ILoginFormProps): JSX.Element {
           name="email"
           id="email"
           required
-          className="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500  focus:outline-none"
+          className={fieldClass('email')}
           placeholder="Email address"
           value={data.email}
           onChange={handleChange}
-          autoComplete="off"
+          aria-invalid="true"
+          aria-describedby="email-error"
         />
+        {hasError(errors, 'email') && (
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+          </div>
+        )}
       </div>
       <div className="relative">
         <input
@@ -47,12 +66,17 @@ export function LoginForm(props: ILoginFormProps): JSX.Element {
           name="password"
           id="password"
           required
-          className="text-gray-900 ring-gray-900 ring-opacity-5 placeholder-gray-400 appearance-none bg-white rounded-md block w-full px-3 py-2 border border-transparent shadow ring-1 sm:text-sm mb-6 focus:border-teal-500 focus:ring-teal-500 focus:outline-none"
+          className={fieldClass('password')}
           placeholder="Password"
           value={data.password}
           onChange={handleChange}
           autoComplete="off"
         />
+        {hasError(errors, 'password') && (
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+          </div>
+        )}
       </div>
       <button
         type="submit"
@@ -69,5 +93,6 @@ export function LoginForm(props: ILoginFormProps): JSX.Element {
 }
 
 LoginForm.defaultProps = {
+  errors: [],
   loading: false,
 };

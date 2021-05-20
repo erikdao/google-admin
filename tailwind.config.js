@@ -9,6 +9,9 @@ module.exports = {
         'sans': ['DM Sans', 'sans-serif'],
         'body': ['DM Sans'],
       },
+      fontSize: {
+        'base': '1.2rem'
+      },
       colors: {
         rose: colors.rose,
         fuchsia: colors.fuchsia,
