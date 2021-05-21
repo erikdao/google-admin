@@ -1,3 +1,4 @@
+import { PlusIcon } from '@heroicons/react/solid';
 import React from 'react';
 
 export function UserListView(): JSX.Element {
@@ -47,6 +48,17 @@ export function UserListView(): JSX.Element {
         </tr>
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
+        <tr>
+          <td className="p-3 bg-white" colSpan={5}>
+            <button
+              type="button"
+              className="w-auto bg-transparent shadow-sm border border-gray-400 px-2 py-1 rounded-lg inline-flex items-center text-sm text-gray-700 cursor-pointer focus:outline-none focus:border-solid focus:border-gray-700"
+            >
+              <PlusIcon className="h-5 w-5 text-gray-700 pr-2" />
+              Add filters
+            </button>
+          </td>
+        </tr>
         <tr>
           <td className="px-6 py-4 whitespace-nowrap">
             <div className="flex items-center">
