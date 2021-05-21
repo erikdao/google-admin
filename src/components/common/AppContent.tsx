@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
   AdjustmentsIcon,
   ChipIcon,
@@ -14,14 +16,17 @@ import {
   UserGroupIcon,
   UserIcon,
 } from '@heroicons/react/solid';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { DeleteUserDialog } from '../auth/DeleteUserDialog';
 
 /**
  * Container component to hold content of each app
  * @returns JSX.Element
  */
 export function AppContent(): JSX.Element {
+  const [dialog, setDialog] = useState<string>();
+
   return (
     <div className="flex-1 flex-grow h-full overflow-x-hidden overflow-y-auto p-6">
       <ul className="grid gap-6 grid-cols-1 sm:grid-cols-3">
@@ -34,7 +39,12 @@ export function AppContent(): JSX.Element {
             <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">
               <Link to="users/?action_id=ADD_USER" className="block">Add a user</Link>
             </li>
-            <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">Delete a user</li>
+            <li
+              className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded"
+              onClick={() => setDialog('DELETE_USER')}
+            >
+              Delete a user
+            </li>
             <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">Update a user&apos;s name and email</li>
             <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">Create an alternate email (email alias)</li>
           </ul>
@@ -211,6 +221,10 @@ export function AppContent(): JSX.Element {
         </li>
 
       </ul>
+
+      {dialog === 'DELETE_USER' && (
+        <DeleteUserDialog isOpen onClose={() => setDialog('')} />
+      )}
     </div>
   );
 }
