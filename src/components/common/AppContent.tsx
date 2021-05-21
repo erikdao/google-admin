@@ -17,7 +17,7 @@ import {
   UserIcon,
 } from '@heroicons/react/solid';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { DeleteUserDialog } from '../auth/DeleteUserDialog';
 
 /**
@@ -37,13 +37,12 @@ export function AppContent(): JSX.Element {
           </div>
           <ul className="p-2 text-sm text-gray-600">
             <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">
-              <Link to="users/?action_id=ADD_USER" className="block">Add a user</Link>
+              <Link to="directory/users/?action_id=ADD_USER" className="block">Add a user</Link>
             </li>
             <li
               className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded"
-              onClick={() => setDialog('DELETE_USER')}
             >
-              Delete a user
+              <Link to="directory/users?action_id=DELETE_USER" className="block">Delete a user</Link>
             </li>
             <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">Update a user&apos;s name and email</li>
             <li className="px-2 py-1 cursor-pointer hover:bg-gray-100 rounded">Create an alternate email (email alias)</li>
@@ -225,6 +224,7 @@ export function AppContent(): JSX.Element {
       {dialog === 'DELETE_USER' && (
         <DeleteUserDialog isOpen onClose={() => setDialog('')} />
       )}
+      <Outlet />
     </div>
   );
 }

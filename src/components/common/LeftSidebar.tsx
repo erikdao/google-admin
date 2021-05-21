@@ -34,7 +34,7 @@ export function LeftSideBar(): JSX.Element {
             <span className="font-semibold text-sm">Dashboard</span>
           </div>
         </Link>
-        <Link to="/directory">
+        <Link to="/directory/users">
           <div
             className={clsx(
               'flex items-center px-4 py-3 hover:bg-gray-100 rounded',
@@ -82,7 +82,7 @@ export function LeftSideBar(): JSX.Element {
           <div
             className={clsx(
               'flex items-center px-4 py-3 hover:bg-gray-100 rounded',
-              { 'bg-gray-300 text-gray-700': location.pathname.includes('security') },
+              { 'bg-gray-300 text-gray-700': location.pathname.includes('reports') },
             )}
           >
             <DocumentReportIcon className="h-5 w-5 text-gray-500 mr-4" />

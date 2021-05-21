@@ -23,7 +23,7 @@ export function DeleteUserDialog(props: IDialogProps): JSX.Element {
         <Dialog.Overlay className="fixed inset-0 bg-gray-500 opacity-50" />
 
         <div className="inline-block z-10 bg-white rounded text-left overflow-hidden shadow-xl max-w-lg mx-auto">
-          <Dialog.Title className="w-100 py-4 px-6 bg-gray-200 text-lg text-gray-800 font-bold">Delete user</Dialog.Title>
+          <Dialog.Title className="w-100 py-4 px-6 bg-gray-700 text-lg text-white font-bold">Delete user</Dialog.Title>
           <Dialog.Description className="px-6 py-4 text-base text-gray-500">
             Users you delete will no longer be able to access Google Workspace services.
             Keep in mind, you can suspend the use if you want to remove Google Workspace access
