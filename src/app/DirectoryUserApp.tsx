@@ -4,6 +4,7 @@ import { Location, State } from 'history';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { CreateUserDialog, DeleteUserDialog } from 'src/components/auth';
+import { BulkUpdateUsersDialog } from 'src/components/directory/BulkUpdateUsersDialog';
 import { DirectoryUserOviewer } from 'src/components/directory/DirectoryUserOviewer';
 import { UserListView } from 'src/components/directory/UserListView';
 
@@ -64,6 +65,9 @@ export function DirectoryUserApp(): JSX.Element {
       )}
       {dialog === 'ADD_USER' && (
         <CreateUserDialog isOpen onClose={() => setDialog(null)} />
+      )}
+      {dialog === 'BULK_UPDATE_USER' && (
+        <BulkUpdateUsersDialog isOpen onClose={() => setDialog(null)} />
       )}
     </div>
   );
