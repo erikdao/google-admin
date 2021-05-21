@@ -1,7 +1,7 @@
 import { Location, State } from 'history';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
-import { DeleteUserDialog } from 'src/components/auth/DeleteUserDialog';
+import { CreateUserDialog, DeleteUserDialog } from 'src/components/auth';
 
 function useSearch(location: Location<State>) {
   return new URLSearchParams(location.search);
@@ -16,6 +16,9 @@ export function DirectoryUserApp(): JSX.Element {
       <h1 className="font-bold text-3xl leading-4">Users</h1>
       {dialog === 'DELETE_USER' && (
         <DeleteUserDialog isOpen onClose={() => setDialog(null)} />
+      )}
+      {dialog === 'ADD_USER' && (
+        <CreateUserDialog isOpen onClose={() => setDialog(null)} />
       )}
     </div>
   );

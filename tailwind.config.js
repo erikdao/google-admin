@@ -22,6 +22,7 @@ module.exports = {
         bgray: colors.blueGray,
         amber: colors.amber,
         emerald: colors.emerald,
+        lblue: colors.lightBlue,
       }
     },
   },
