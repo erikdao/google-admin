@@ -4,6 +4,7 @@ import { DirectoryGroupApp, DirectoryUserApp } from './app';
 import { Login, SignUp } from './pages';
 import DirectoryPage from './pages/DirectoryPage';
 import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function Application(): JSX.Element {
   return (
@@ -20,7 +21,7 @@ function Application(): JSX.Element {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          {/* <Route path="*" element={<HomePage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </div>
