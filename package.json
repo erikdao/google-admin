@@ -6,6 +6,9 @@
     "@craco/craco": "^6.1.2",
     "@headlessui/react": "^1.2.0-d0e27ff",
     "@heroicons/react": "^1.0.1",
+    "@lingui/core": "^3.9.0",
+    "@lingui/macro": "^3.9.0",
+    "@lingui/react": "^3.9.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -27,6 +30,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "extract": "lingui extract",
+    "compile": "lingui compile",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@lingui/cli": "^3.9.0",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "autoprefixer": "^9",
     "eslint-config-airbnb": "^18.2.1",

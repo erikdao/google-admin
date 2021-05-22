@@ -2,10 +2,11 @@ import { Menu, Popover, Transition } from '@headlessui/react';
 import { BellIcon, SearchCircleIcon } from '@heroicons/react/solid';
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from 'src/contexts';
+import { Trans } from '@lingui/macro';
+import * as contexts from 'src/contexts';
 
 export function Header(): JSX.Element {
-  const { user, logout } = useContext(UserContext);
+  const { user, logout } = useContext(contexts.UserContext);
 
   const handleSignout = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -30,7 +31,12 @@ export function Header(): JSX.Element {
               <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
                 <SearchCircleIcon className="h-5 w-5 flex-shrink-0 text-gray-400" />
               </div>
-              <input id="search" type="text" className="block w-full bg-gray-800 text-gray-800 outline-none focus:outline-none focus:bg-gray-50 px-3 py-2 pl-10 rounded transition-colors duration-150 ease-in-out" placeholder="Search for users, groups or settings" />
+              <input
+                id="search"
+                type="text"
+                className="block w-full bg-gray-800 text-gray-800 outline-none focus:outline-none focus:bg-gray-50 px-3 py-2 pl-10 rounded transition-colors duration-150 ease-in-out"
+                placeholder="Search for users, groups or settings"
+              />
             </div>
           </div>
         </div>
@@ -85,7 +91,7 @@ export function Header(): JSX.Element {
                           to="/my-profile"
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
-                          Your profile
+                          <Trans id="header.usermenu.profile" />
                         </Link>
                       </Menu.Item>
                       <Menu.Item>
@@ -93,7 +99,7 @@ export function Header(): JSX.Element {
                           to="/settings"
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
-                          Settings
+                          <Trans id="header.usermenu.settings" />
                         </Link>
                       </Menu.Item>
                       <Menu.Item>
@@ -102,7 +108,7 @@ export function Header(): JSX.Element {
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           onClick={handleSignout}
                         >
-                          Sign out
+                          <Trans id="header.usermenu.signout" />
                         </Link>
                       </Menu.Item>
                     </div>

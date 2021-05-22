@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"header.usermenu.profile":"Tài khoản","header.usermenu.settings":"Cài đặt","header.usermenu.signout":"Đăng xuất"}};
