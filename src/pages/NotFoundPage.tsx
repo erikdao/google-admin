@@ -11,7 +11,7 @@ export default function NotFoundPage(): JSX.Element {
         <div className="mx-auto max-w-lg flex flex-col p-4">
           <img src={FixingBugs} alt="" className="h-40 w-auto mb-10" />
           <h1 className="font-light text-xl">
-            <span className="text-gray-700">The request URL was not found on this server. </span>
+            <span className="text-red-700">The request URL was not found on this server. </span>
             <span className="text-gray-400">That&apos;s all we know</span>
           </h1>
         </div>

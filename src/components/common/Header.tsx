@@ -1,16 +1,17 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { BellIcon, SearchCircleIcon } from '@heroicons/react/solid';
-import clsx from 'clsx';
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-const userNavigation = [
-  { name: 'Your Profile', href: '/' },
-  { name: 'Settings', href: '/' },
-  { name: 'Sign out', href: '/' },
-];
+import { UserContext } from 'src/contexts';
 
 export function Header(): JSX.Element {
+  const { user, logout } = useContext(UserContext);
+
+  const handleSignout = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    logout();
+  };
+
   return (
     <header className="w-100 z-10 px-4 sm:px-4 lg:px-6 bg-gray-700 text-gray-100 shadow-lg">
       <div className="relative h-16 flex justify-between">
@@ -55,8 +56,8 @@ export function Header(): JSX.Element {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80"
-                      alt=""
+                      src={user.profileImage}
+                      alt={`${user.firstName} ${user.lastName}`}
                     />
                   </Menu.Button>
                 </div>
@@ -76,24 +77,34 @@ export function Header(): JSX.Element {
                   >
                     <div className="px-4 py-3">
                       <p className="text-sm text-gray-600">Signed in as</p>
-                      <p className="text-sm font-medium text-gray-900 truncate">cuong@neuraltalks.io</p>
+                      <p className="text-sm font-medium text-gray-900 truncate">{user.email}</p>
                     </div>
                     <div className="py-1">
-                      {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <Link
-                              to={item.href}
-                              className={clsx(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700',
-                              )}
-                            >
-                              {item.name}
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      ))}
+                      <Menu.Item>
+                        <Link
+                          to="/my-profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Your profile
+                        </Link>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <Link
+                          to="/settings"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Settings
+                        </Link>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          onClick={handleSignout}
+                        >
+                          Sign out
+                        </Link>
+                      </Menu.Item>
                     </div>
                   </Menu.Items>
                 </Transition>

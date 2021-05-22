@@ -29,3 +29,13 @@ export type TLoginCred = {
   email: string;
   password: string;
 };
+
+/**
+ * User types
+ */
+export type TUser = {
+  email: string | null;
+  firstName?: string;
+  lastName?: string;
+  profileImage?: string;
+};

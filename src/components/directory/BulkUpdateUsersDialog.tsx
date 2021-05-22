@@ -15,9 +15,9 @@ export function BulkUpdateUsersDialog(props: IDialogProps): JSX.Element {
   return (
     <Dialog
       as="div"
-      initialFocus={searchRef}
       open={isOpen}
       onClose={onClose}
+      initialFocus={searchRef}
       className="fixed z-10 inset-0 overflow-y-auto"
     >
       <div className="flex items-center justify-center min-h-screen p-4 text-cetner">
