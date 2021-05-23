@@ -8,18 +8,20 @@ import {
   Routes,
 } from 'react-router-dom';
 import { messages } from 'src/locales/en/contents.js';
-import { DirectoryGroupApp, DirectoryUserApp } from './apps';
+import { DirectoryGroupApp, DirectoryUserApp, MyProfilePersonalInfoApp } from './apps';
+import { MyProfileHomeApp } from './apps/MyProfileHomeApp';
 import { UserContext } from './contexts';
 import { Login, SignUp } from './pages';
 import DirectoryPage from './pages/DirectoryPage';
 import HomePage from './pages/HomePage';
+import MyProfilePage from './pages/MyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 import { isAuthenticated } from './services/auth';
 import { TUser } from './types';
 
 const sampleUser: TUser = {
   email: 'cuong@neuraltalks.io',
-  firstName: 'Cuong',
+  firstName: 'Erik',
   lastName: 'Dao',
   profileImage: 'https://avatars.githubusercontent.com/u/26970731',
 };
@@ -54,7 +56,11 @@ function Application(): JSX.Element {
                   <Route path="calendarresources" element={<DirectoryUserApp />} />
                   <Route path="appsettings" element={<DirectoryUserApp />} />
                 </Route>
-                <Route path="/auth/*" element={<Navigate to="/" />} />
+                <Route path="my-profile" element={<MyProfilePage />}>
+                  <Route path="/" element={<MyProfileHomeApp />} />
+                  <Route path="personal-information" element={<MyProfilePersonalInfoApp />} />
+                </Route>
+                <Route path="auth/*" element={<Navigate to="/" />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             ) : (

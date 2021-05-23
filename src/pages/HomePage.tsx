@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-boolean-value */
-import React, { useState } from 'react';
-import { useLocation } from 'react-router';
+import React from 'react';
 import { AppContent } from 'src/components/common/AppContent';
 import { LeftSideBar } from 'src/components/common/LeftSidebar';
 import { Header } from '../components/common/Header';
