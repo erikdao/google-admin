@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { ChevronRightIcon } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { PageTitle } from 'src/components/common/PageTitle';
@@ -26,7 +27,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             <div className="p-4 flex items-stretch text-xs text-gray-500 hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase">Photo</div>
               <div className="flex-grow w-2/4 text-sm">You can&apos;t change the photo of this account</div>
-              <div className="flex-grow flex items-end">
+              <div className="flex-grow flex justify-end">
                 <img src={user.profileImage} alt="" className="rounded-full h-14 w-14" />
               </div>
             </div>
@@ -39,7 +40,12 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               </div>
             </div>
 
-            <div className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100">
+            <div
+              role="navigation"
+              className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100 cursor-pointer"
+              onClick={() => setDialog('BIRTHDAY')}
+              onKeyDown={() => setDialog('BIRTHDAY')}
+            >
               <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Birthday</div>
               <div className="flex-grow text-sm font-normal text-gray-700">Add birthday</div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center cursor-pointer">
