@@ -76,9 +76,9 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             <div className="p-4 flex items-stretch text-xs text-gray-500 hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase">Email</div>
               <div className="flex-grow w-2/4 text-sm text-gray-700">
-                <p>cuong@neuraltalks.io</p>
-                <p>duccuong.hust@gmail.com</p>
-                <p>cuongdd@kth.se</p>
+                <p>xxx@neuraltalks.io</p>
+                <p>abcdvec.xxxx@gmail.com</p>
+                <p>abc@kth.se</p>
                 <p className="text-gray-500">+2 more</p>
               </div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
@@ -89,8 +89,8 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             <div className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Phone</div>
               <div className="flex-grow text-sm font-normal text-gray-700">
-                <p>0767666457</p>
-                <p>+84328373796</p>
+                <p>076766xxxx</p>
+                <p>+84328xxxxxx</p>
               </div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
                 <ChevronRightIcon className="h-4 w-4 text-gray-700" />
