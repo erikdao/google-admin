@@ -22,6 +22,11 @@ export function hasError(errors: IErrorProps[] | undefined, key: string): boolea
   return found && found.length > 0;
 }
 
+export interface IDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 /**
  * Authentication types
  */
