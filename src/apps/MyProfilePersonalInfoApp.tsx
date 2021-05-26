@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
 import { UserContext } from 'src/contexts';
+import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
 
 export function MyProfilePersonalInfoApp(): JSX.Element {
   const { user } = useContext(UserContext);
@@ -12,14 +13,15 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
   return (
     <>
       <PageTitle title="Personal Information" />
-      <div className="flex-1 flex-grow h-full flex flex-col overflow-x-hidden overflow-y-auto p-6 bg-white">
-        <div className="flex-1 flex flex-col items-center max-w-7xl md:max-w-4xl mx-auto">
+      <div className="flex-1 flex-grow h-full w-full flex flex-col overflow-x-hidden overflow-y-auto p-6 bg-white">
+        <div className="flex-0 flex-shrink-0 flex-grow flex flex-col items-center w-full sm:w-3/4 max-w-7xl md:max-w-4xl mx-auto">
           <div className="flex-0 flex flex-col items-center justify-center p-4 space-y-4 pt-8 w-full">
             <h1 className="font-normal text-3xl text-gray-700">Personal info</h1>
             <p className="text-base text-gray-500">Basic info, like your name and photo, that you use on Google services</p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 w-full mt-2 divide-y divide-gray-200">
+          {/* Basic info */}
+          <div className="rounded-lg border border-gray-300 w-full mt-2 divide-y divide-gray-200">
             <div className="p-4 divide-y-skip">
               <h3 className="text-2xl text-gray-700">Basic info</h3>
               <p className="text-sm mt-2 text-gray-500">Some info may be visible to other people using Google services. <a href="/" className="text-red-700">Learn more</a></p>
@@ -64,12 +66,56 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               </div>
             </div>
           </div>
+          {/* End Basic info */}
 
-          <div className="p-4 text-sm text-gray-500 mt-10">
-            Only you can see your settings. You might also want to review your settings
-            for Maps, Search, or whichever Google services you use most.
-            Google keeps your data private, safe, and secure. <a href="/" className="text-red-700">Learn more</a>
+          {/* Contact info */}
+          <div className="mt-8 rounded-lg border border-gray-300 w-full divide-y divide-gray-200">
+            <div className="p-4 divide-y-skip">
+              <h3 className="text-2xl text-gray-700">Contact info</h3>
+            </div>
+            <div className="p-4 flex items-stretch text-xs text-gray-500 hover:cursor-pointer hover:bg-gray-100">
+              <div className="flex-shrink-0 w-1/4 uppercase">Email</div>
+              <div className="flex-grow w-2/4 text-sm text-gray-700">
+                <p>cuong@neuraltalks.io</p>
+                <p>duccuong.hust@gmail.com</p>
+                <p>cuongdd@kth.se</p>
+                <p className="text-gray-500">+2 more</p>
+              </div>
+              <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
+                <ChevronRightIcon className="h-4 w-4 text-gray-700" />
+              </div>
+            </div>
+
+            <div className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100">
+              <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Phone</div>
+              <div className="flex-grow text-sm font-normal text-gray-700">
+                <p>0767666457</p>
+                <p>+84328373796</p>
+              </div>
+              <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
+                <ChevronRightIcon className="h-4 w-4 text-gray-700" />
+              </div>
+            </div>
           </div>
+          {/* End Contact info */}
+
+          {/* Choose what others see */}
+          <div className="mt-8 rounded-lg border border-gray-300 w-full divide-y divide-gray-200">
+            <div className="flex items-stretch">
+              <div className="p-4 w-1/2">
+                <h3 className="text-2xl text-gray-700">Choose what others see</h3>
+                <p className="text-sm text-gray-600">You decide what personal info you make visible across Google services</p>
+              </div>
+              <div className="p-4 w-1/2">
+                <img src={AboutMeScene} alt="About me" className="w-100 h-auto" />
+              </div>
+            </div>
+
+            <div className="p-4 block text-blue-500 text-left text-sm hover:bg-gray-100 cursor-pointer flex-grow-0 flex-shrink-0">
+              <a href="/">Go to About me</a>
+            </div>
+          </div>
+          {/* Choose what others see  */}
         </div>
       </div>
 

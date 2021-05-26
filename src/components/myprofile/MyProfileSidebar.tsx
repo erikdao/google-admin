@@ -51,14 +51,14 @@ export function MyProfileSidebar(): JSX.Element {
             <span className="font-semibold text-sm">Personal Information</span>
           </div>
         </Link>
-        <Link to="/my-profile/personalization">
+        <Link to="/my-profile/data-and-personalization">
           <div
             className={clsx(
               'flex items-center px-4 py-3 hover:bg-gray-100 rounded',
-              { 'bg-gray-300 text-lblue-500': location.pathname.includes('/my-profile/personalization') },
+              { 'bg-gray-300 text-lblue-500': location.pathname.includes('data-and-personalization') },
             )}
           >
-            <CollectionIcon className="h-5 w-5 text-gray-600 mr-4" />
+            <CollectionIcon className={clsx('h-5 w-5 mr-4', { 'text-lblue-600': location.pathname.includes('data-and-personalization') })} />
             <span className="font-semibold text-sm">Data &amp; personalization</span>
           </div>
         </Link>

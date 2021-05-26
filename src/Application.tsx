@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import { messages } from 'src/locales/en/contents.js';
 import { DirectoryGroupApp, DirectoryUserApp, MyProfilePersonalInfoApp } from './apps';
+import { MyProfileDataPersonalizationApp } from './apps/MyProfileDataPersonalizationApp';
 import { MyProfileHomeApp } from './apps/MyProfileHomeApp';
 import { UserContext } from './contexts';
 import { Login, SignUp } from './pages';
@@ -29,16 +30,16 @@ const sampleUser: TUser = {
 function Application(): JSX.Element {
   const [user, setUser] = useState<TUser>(sampleUser);
 
-  const logout = () => setUser({ email: null });
+  // In the near future once we have a proper authentication system,
+  // the logic of this function should be moved out of the component
+  const logout = () => {
+    setUser({ email: null });
+    window.location.reload();
+  };
 
   useEffect(() => {
-    // eslint-disable-next-line
-    console.log('user', user);
-  }, [user]);
-
-  useEffect(() => {
-    i18n.load('en', messages);
-    i18n.activate('en');
+    i18n.load('vi', messages);
+    i18n.activate('vi');
   }, []);
 
   return (
@@ -59,6 +60,7 @@ function Application(): JSX.Element {
                 <Route path="my-profile" element={<MyProfilePage />}>
                   <Route path="/" element={<MyProfileHomeApp />} />
                   <Route path="personal-information" element={<MyProfilePersonalInfoApp />} />
+                  <Route path="data-and-personalization" element={<MyProfileDataPersonalizationApp />} />
                 </Route>
                 <Route path="auth/*" element={<Navigate to="/" />} />
                 <Route path="*" element={<NotFoundPage />} />

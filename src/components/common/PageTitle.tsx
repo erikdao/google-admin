@@ -9,7 +9,7 @@ export function PageTitle(props: IProps): JSX.Element {
 
   useEffect(() => {
     document.title = `${title} | Google Admin`;
-  }, []);
+  }, [title]);
 
   return <></>;
 }
