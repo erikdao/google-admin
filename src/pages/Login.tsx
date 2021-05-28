@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import GoogleLogo from 'src/assets/images/google_logo.svg';
+import { AuthContext } from 'src/contexts';
+import { convertFirebaseUserToAuthUser, signIn } from 'src/services/auth';
 import { IErrorProps, TLoginCred } from 'src/types';
+import { IAuthUser } from 'src/types/auth';
 import { LoginForm } from '../components/auth';
 
 /**
  * @param error Firebase error, attributes include `code`, `message`
  */
+// eslint-disable-next-line
 function convertFirebaseErrors(error: any) {
   const errors: IErrorProps[] = [];
   const { code, message } = error;
@@ -28,13 +30,17 @@ function convertFirebaseErrors(error: any) {
 }
 
 export function Login(): JSX.Element {
-  const auth = firebase.auth();
+  const { setAuthUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<IErrorProps[]>([]);
 
-  const signIn = async (email: string, password: string): Promise<void> => {
+  const login = async (email: string, password: string): Promise<void> => {
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const fbUser = await signIn(email, password);
+      if (fbUser !== null) {
+        const authenticatedUser: IAuthUser = convertFirebaseUserToAuthUser(fbUser);
+        setAuthUser(authenticatedUser);
+      }
     } catch (error) {
       setErrors(convertFirebaseErrors(error));
     }
@@ -43,7 +49,7 @@ export function Login(): JSX.Element {
   const handleLoginSubmit = async (data: TLoginCred): Promise<void> => {
     setLoading(true);
     const { email, password } = data;
-    await signIn(email, password);
+    await login(email, password);
     setLoading(false);
   };
 

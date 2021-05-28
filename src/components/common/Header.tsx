@@ -3,21 +3,15 @@ import { BellIcon, SearchCircleIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import * as contexts from 'src/contexts';
+import { AuthContext } from 'src/contexts';
 import { signOut } from 'src/services/auth';
 
-const dumbUser = {
-  email: null,
-  displayName: null,
-  photoURL: '',
-};
-
 export function Header(): JSX.Element {
-  const authUser = useContext(contexts.AuthContext) || dumbUser;
+  const { authUser } = useContext(AuthContext);
 
   const handleSignout = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
-    await signOut();
+    await signOut(true);
   };
 
   return (

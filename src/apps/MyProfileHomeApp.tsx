@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import * as contexts from 'src/contexts';
 import DataIcon from 'src/assets/icons/dataandpersonalization_icon_96x96.png';
 import SecurityIcon from 'src/assets/icons/securitycheckup_green_96x96.png';
 import StorageIcon from 'src/assets/icons/googleonestorage_spot_72x72.png';
 import PrivacyIcon from 'src/assets/icons/privacycheckup_initial_active_96x96.png';
+import { AuthContext } from 'src/contexts';
 
 const dumbUser = {
   photoURL: '',
@@ -11,7 +11,7 @@ const dumbUser = {
 };
 
 export function MyProfileHomeApp(): JSX.Element {
-  const authUser = useContext(contexts.AuthContext) || dumbUser;
+  const { authUser } = useContext(AuthContext) || dumbUser;
 
   return (
     <div className="flex-1 flex-grow h-full flex flex-col overflow-x-hidden overflow-y-auto p-6 bg-white">

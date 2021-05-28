@@ -3,8 +3,8 @@ import { ChevronRightIcon } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
-import { AuthContext } from 'src/contexts';
 import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
+import { AuthContext } from 'src/contexts';
 
 const dumbUser = {
   email: null,
@@ -13,7 +13,7 @@ const dumbUser = {
 };
 
 export function MyProfilePersonalInfoApp(): JSX.Element {
-  const authUser = useContext(AuthContext) || dumbUser;
+  const { authUser } = useContext(AuthContext) || dumbUser;
   const [dialog, setDialog] = useState('');
 
   return (

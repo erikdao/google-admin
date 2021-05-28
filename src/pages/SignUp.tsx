@@ -9,6 +9,7 @@ import { SignUpForm } from '../components/auth';
 /**
  * @param error Firebase error, attributes include `code`, `message`
  */
+// eslint-disable-next-line
 function convertFirebaseErrors(error: any) {
   const errors: IErrorProps[] = [];
   const { code, message } = error;
@@ -32,7 +33,6 @@ export function SignUp(): JSX.Element {
       await createUser(data.email, data.password);
     } catch (error) {
       // eslint-disable-next-line
-      console.log('error', error);
       setErrors(convertFirebaseErrors(error));
     } finally {
       setLoading(false);
