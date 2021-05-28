@@ -5,6 +5,8 @@ import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
 import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
 import { AuthContext } from 'src/contexts';
+import { DialogType } from 'src/constants';
+import { UpdateNameDialog } from 'src/components/myprofile/UpdateNameDialog';
 
 const dumbUser = {
   email: null,
@@ -44,20 +46,26 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Name</div>
               <div className="flex-grow text-sm font-normal text-gray-700">{authUser.displayName}</div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
-                <ChevronRightIcon className="h-4 w-4 text-gray-700" />
+                <ChevronRightIcon
+                  className="h-4 w-4 text-gray-700"
+                  onClick={() => setDialog(DialogType.MY_PROFILE_UPDATE_NAME)}
+                />
               </div>
             </div>
 
             <div
               role="navigation"
               className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100 cursor-pointer"
-              onClick={() => setDialog('BIRTHDAY')}
-              onKeyDown={() => setDialog('BIRTHDAY')}
+              onClick={() => setDialog(DialogType.MY_PROFILE_UPDATE_BIRTHDAY)}
+              onKeyDown={() => setDialog(DialogType.MY_PROFILE_UPDATE_BIRTHDAY)}
             >
               <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Birthday</div>
               <div className="flex-grow text-sm font-normal text-gray-700">Add birthday</div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center cursor-pointer">
-                <ChevronRightIcon className="h-4 w-4 text-gray-700" onClick={() => setDialog('BIRTHDAY')} />
+                <ChevronRightIcon
+                  className="h-4 w-4 text-gray-700"
+                  onClick={() => setDialog(DialogType.MY_PROFILE_UPDATE_BIRTHDAY)}
+                />
               </div>
             </div>
 
@@ -125,7 +133,8 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
         </div>
       </div>
 
-      {dialog === 'BIRTHDAY' && <BirthdayDialog isOpen onClose={() => setDialog('')} />}
+      {dialog === DialogType.MY_PROFILE_UPDATE_BIRTHDAY && <BirthdayDialog isOpen onClose={() => setDialog('')} />}
+      {dialog === DialogType.MY_PROFILE_UPDATE_NAME && <UpdateNameDialog isOpen onClose={() => setDialog('')} />}
     </>
   );
 }

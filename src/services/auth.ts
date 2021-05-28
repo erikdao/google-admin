@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { IAuthUser } from 'src/types/auth';
+import { IAuthUser, TAuthUserPayload } from 'src/types/auth';
 
 /**
  * Invoke Firebase SDK to create a new user
@@ -38,4 +38,13 @@ export const convertFirebaseUserToAuthUser = (user: firebase.User | null): IAuth
     photoURL: user.photoURL || '',
   };
   return authUser;
+};
+
+export const updateUserProfile = async (data: TAuthUserPayload): Promise<IAuthUser> => {
+  const { currentUser } = firebase.auth();
+  if (currentUser === null) {
+    return {} as IAuthUser;
+  }
+  await currentUser.updateProfile(data);
+  return convertFirebaseUserToAuthUser(currentUser);
 };

@@ -10,6 +10,7 @@ import {
 import clsx from 'clsx';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Trans } from '@lingui/macro';
 
 export function MyProfileSidebar(): JSX.Element {
   const location = useLocation();
@@ -24,7 +25,9 @@ export function MyProfileSidebar(): JSX.Element {
             )}
           >
             <ArrowLeftIcon className="h-5 w-5 text-gray-500 mr-4" />
-            <span className="font-normal text-sm">Back to home</span>
+            <span className="font-normal text-sm">
+              <Trans id="myprofile.sidebar.backtohome" />
+            </span>
           </div>
         </Link>
         <Link to="/my-profile">
@@ -37,7 +40,9 @@ export function MyProfileSidebar(): JSX.Element {
             <ViewGridIcon
               className={clsx('h-5 w-5 mr-4', { 'text-lblue-600': location.pathname === '/my-profile' })}
             />
-            <span className="font-semibold text-sm">Dashboard</span>
+            <span className="font-semibold text-sm">
+              <Trans id="myprofile.sidebar.dashboard" />
+            </span>
           </div>
         </Link>
         <Link to="/my-profile/personal-information">
@@ -48,7 +53,9 @@ export function MyProfileSidebar(): JSX.Element {
             )}
           >
             <IdentificationIcon className={clsx('h-5 w-5 mr-4', { 'text-lblue-600': location.pathname.includes('/my-profile/personal-information') })} />
-            <span className="font-semibold text-sm">Personal Information</span>
+            <span className="font-semibold text-sm">
+              <Trans id="myprofile.sidebar.personalinformation" />
+            </span>
           </div>
         </Link>
         <Link to="/my-profile/data-and-personalization">
@@ -59,7 +66,9 @@ export function MyProfileSidebar(): JSX.Element {
             )}
           >
             <CollectionIcon className={clsx('h-5 w-5 mr-4', { 'text-lblue-600': location.pathname.includes('data-and-personalization') })} />
-            <span className="font-semibold text-sm">Data &amp; personalization</span>
+            <span className="font-semibold text-sm">
+              <Trans id="myprofile.sidebar.datapersonalization" />
+            </span>
           </div>
         </Link>
         <Link to="/my-profile/security">
@@ -70,7 +79,9 @@ export function MyProfileSidebar(): JSX.Element {
             )}
           >
             <ShieldCheckIcon className="h-5 w-5 text-gray-600 mr-4" />
-            <span className="font-semibold text-sm">Security</span>
+            <span className="font-semibold text-sm">
+              <Trans id="myprofile.sidebar.security" />
+            </span>
           </div>
         </Link>
         <Link to="/my-profile/groups">
@@ -81,7 +92,9 @@ export function MyProfileSidebar(): JSX.Element {
             )}
           >
             <UserGroupIcon className="h-5 w-5 text-gray-600 mr-4" />
-            <span className="font-semibold text-sm">People groups</span>
+            <span className="font-semibold text-sm">
+              <Trans id="myprofile.sidebar.peoplegroups" />
+            </span>
           </div>
         </Link>
         <Link to="/my-profile/billing">
@@ -92,7 +105,9 @@ export function MyProfileSidebar(): JSX.Element {
             )}
           >
             <CreditCardIcon className="h-5 w-5 text-gray-600 mr-4" />
-            <span className="font-semibold text-sm">Payment &amp; subscriptions</span>
+            <span className="font-semibold text-sm">
+              <Trans id="myprofile.sidebar.paymentsubscriptions" />
+            </span>
           </div>
         </Link>
       </div>

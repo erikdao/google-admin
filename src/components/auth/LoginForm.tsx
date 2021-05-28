@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
 import { ExclamationCircleIcon } from '@heroicons/react/solid';
-import { IErrorProps, TLoginCred, hasError } from '../../types';
+import { Trans } from '@lingui/macro';
+import clsx from 'clsx';
+import React, { useState } from 'react';
+import { hasError, IErrorProps, TLoginCred } from '../../types';
 
 interface ILoginFormProps {
   errors?: IErrorProps[];
@@ -83,10 +84,12 @@ export function LoginForm(props: ILoginFormProps): JSX.Element {
         disabled={loading}
         className="block w-full py-2 px-3 border border-transparent rounded-md text-white font-medium bg-gray-700 shadow-sm sm:text-sm mb-6 hover:bg-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 disabled:opacity-50"
       >
-        Sign in to account
+        <Trans id="signin.form.submitbutton" />
       </button>
       <p className="text-center mt-0">
-        <a href="/" className="text-sm underline hover:text-gray-900">Forgot password?</a>
+        <a href="/" className="text-sm underline hover:text-gray-900">
+          <Trans id="signin.form.forgotpassword" />
+        </a>
       </p>
     </form>
   );

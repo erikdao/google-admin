@@ -7,3 +7,5 @@ export interface IAuthUser {
   displayName?: string;
   photoURL?: string;
 }
+
+export type TAuthUserPayload = Partial<IAuthUser>

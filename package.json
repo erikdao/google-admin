@@ -1,5 +1,5 @@
 {
-  "name": "aws-cost-manager",
+  "name": "google-admin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,11 +29,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "REACT_APP_NODE_ENV=dev craco start",
     "build": "craco build",
     "test": "craco test",
-    "extract": "lingui extract",
-    "compile": "lingui compile",
+    "lingui:extract": "lingui extract",
+    "lingui:compile": "lingui compile",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -55,6 +55,7 @@
     "@lingui/cli": "^3.9.0",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "autoprefixer": "^9",
+    "dotenv": "^10.0.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.4.0",

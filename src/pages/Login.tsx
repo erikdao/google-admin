@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleLogo from 'src/assets/images/google_logo.svg';
@@ -57,7 +58,9 @@ export function Login(): JSX.Element {
     <div className="font-sans antialiased text-gray-600 bg-bgray-100 h-screen min-h-full flex flex-col relative">
       <main className="relative z-10 flex-auto flex items-center justify-center text-sm text-center text-gray-600 py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-sm p-6 bg-white rounded-xl shadow-xl flex flex-col">
-          <h1 className="text-center font-semibold text-4xl mb-8">Log in</h1>
+          <h1 className="text-center font-semibold text-4xl mb-8">
+            <Trans id="login.pagetitle" />
+          </h1>
           <div className="flex flex-col divide-y space-y-4 divide-gray-200">
             <div className="w-full">
               <button
@@ -65,7 +68,9 @@ export function Login(): JSX.Element {
                 className="w-full flex items-center py-3 px-3 border border-teal-600 shadow-sm text-center font-medium rounded-md text-gray-800 bg-white hover:bg-gray-50 focus:outline-none"
               >
                 <img src={GoogleLogo} alt="" className="h-4 w-4" />
-                <span className="flex-1 flex-grow text-center">Sign in with Google</span>
+                <span className="flex-1 flex-grow text-center">
+                  <Trans id="login.withgoogle" />
+                </span>
               </button>
             </div>
             <div className="w-full pt-6">

@@ -13,14 +13,58 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/common/Header.tsx:104
+#: src/components/common/Header.tsx:102
 msgid "header.usermenu.profile"
 msgstr "Your profile"
 
-#: src/components/common/Header.tsx:112
+#: src/components/common/Header.tsx:110
 msgid "header.usermenu.settings"
 msgstr "Settings"
 
-#: src/components/common/Header.tsx:121
+#: src/components/common/Header.tsx:119
 msgid "header.usermenu.signout"
 msgstr "Sign out"
+
+#: src/pages/Login.tsx:62
+msgid "login.pagetitle"
+msgstr "Log in"
+
+#: src/pages/Login.tsx:72
+msgid "login.withgoogle"
+msgstr "Sign in with Google"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:29
+msgid "myprofile.sidebar.backtohome"
+msgstr "Back to home"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:44
+msgid "myprofile.sidebar.dashboard"
+msgstr "Dashboard"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:70
+msgid "myprofile.sidebar.datapersonalization"
+msgstr "Data & personalizations"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:109
+msgid "myprofile.sidebar.paymentsubscriptions"
+msgstr "Payments & subscriptions"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:96
+msgid "myprofile.sidebar.peoplegroups"
+msgstr "People groups"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:57
+msgid "myprofile.sidebar.personalinformation"
+msgstr "Personal information"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:83
+msgid "myprofile.sidebar.security"
+msgstr "Security"
+
+#: src/components/auth/LoginForm.tsx:91
+msgid "signin.form.forgotpassword"
+msgstr "Forgot password?"
+
+#: src/components/auth/LoginForm.tsx:87
+msgid "signin.form.submitbutton"
+msgstr "Sign in to account"

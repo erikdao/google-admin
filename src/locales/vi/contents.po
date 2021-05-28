@@ -13,14 +13,58 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/common/Header.tsx:104
+#: src/components/common/Header.tsx:102
 msgid "header.usermenu.profile"
 msgstr "Tài khoản"
 
-#: src/components/common/Header.tsx:112
+#: src/components/common/Header.tsx:110
 msgid "header.usermenu.settings"
 msgstr "Cài đặt"
 
-#: src/components/common/Header.tsx:121
+#: src/components/common/Header.tsx:119
 msgid "header.usermenu.signout"
 msgstr "Đăng xuất"
+
+#: src/pages/Login.tsx:62
+msgid "login.pagetitle"
+msgstr "Đăng nhập"
+
+#: src/pages/Login.tsx:72
+msgid "login.withgoogle"
+msgstr "Đăng nhập bằng Google"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:29
+msgid "myprofile.sidebar.backtohome"
+msgstr "Trờ về Trang chủ"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:44
+msgid "myprofile.sidebar.dashboard"
+msgstr "Tổng quan"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:70
+msgid "myprofile.sidebar.datapersonalization"
+msgstr "Dữ liệu & Cá nhân hóa"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:109
+msgid "myprofile.sidebar.paymentsubscriptions"
+msgstr "Thanh toán"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:96
+msgid "myprofile.sidebar.peoplegroups"
+msgstr "Nhóm người dùng"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:57
+msgid "myprofile.sidebar.personalinformation"
+msgstr "Thông tin cá nhân"
+
+#: src/components/myprofile/MyProfileSidebar.tsx:83
+msgid "myprofile.sidebar.security"
+msgstr "Bảo mật"
+
+#: src/components/auth/LoginForm.tsx:91
+msgid "signin.form.forgotpassword"
+msgstr "Quên mật khẩu?"
+
+#: src/components/auth/LoginForm.tsx:87
+msgid "signin.form.submitbutton"
+msgstr "Đăng nhập"

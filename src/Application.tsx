@@ -9,7 +9,7 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import { messages } from 'src/locales/en/contents.js';
+import { messages } from 'src/locales/vi/contents.js';
 import { DirectoryGroupApp, DirectoryUserApp, MyProfilePersonalInfoApp } from './apps';
 import { MyProfileHomeApp } from './apps/MyProfileHomeApp';
 import { AuthContext } from './contexts';
