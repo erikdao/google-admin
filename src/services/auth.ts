@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { IAuthUser, TAuthUserPayload } from 'src/types/auth';
+import { createUploadImageTask } from './storage';
 
 /**
  * Invoke Firebase SDK to create a new user
@@ -47,4 +48,15 @@ export const updateUserProfile = async (data: TAuthUserPayload): Promise<IAuthUs
   }
   await currentUser.updateProfile(data);
   return convertFirebaseUserToAuthUser(currentUser);
+};
+
+export const updateUserImage = async (image: File): Promise<IAuthUser | null> => {
+  const folder = 'profile-images';
+  const uploadTask: firebase.storage.UploadTask = createUploadImageTask(image, folder);
+  let user = null;
+  uploadTask.then(async (snapshot) => {
+    const photoURL = await snapshot.ref.getDownloadURL();
+    user = await updateUserProfile({ photoURL });
+  });
+  return user;
 };

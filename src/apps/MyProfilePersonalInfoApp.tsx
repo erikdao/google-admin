@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { ChevronRightIcon } from '@heroicons/react/outline';
-import React, { useContext, useState } from 'react';
+import React, { createRef, useContext, useState } from 'react';
+import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
 import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
-import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
-import { AuthContext } from 'src/contexts';
-import { DialogType } from 'src/constants';
 import { UpdateNameDialog } from 'src/components/myprofile/UpdateNameDialog';
+import { DialogType } from 'src/constants';
+import { AuthContext } from 'src/contexts';
+import { updateUserProfile } from 'src/services/auth';
+import { createUploadImageTask } from 'src/services/storage';
+import { IAuthUser } from 'src/types/auth';
 
 const dumbUser = {
   email: null,
@@ -15,8 +18,38 @@ const dumbUser = {
 };
 
 export function MyProfilePersonalInfoApp(): JSX.Element {
-  const { authUser } = useContext(AuthContext) || dumbUser;
+  const { authUser, setAuthUser } = useContext(AuthContext) || dumbUser;
   const [dialog, setDialog] = useState('');
+
+  const photoUploadRef: React.RefObject<HTMLInputElement> = createRef();
+
+  const handlePhotoClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    event.preventDefault();
+    if (photoUploadRef && photoUploadRef.current) {
+      photoUploadRef.current.click();
+    }
+  };
+
+  const handlePhotoKeyDown = () => null;
+
+  const innerUploadImage = (file: File) => {
+    const folder = 'profile-images';
+    const uploadTask = createUploadImageTask(file, folder);
+    uploadTask.then((snapshot) => {
+      snapshot.ref.getDownloadURL().then((photoURL) => {
+        updateUserProfile({ photoURL }).then((user: IAuthUser) => {
+          setAuthUser(user);
+        });
+      });
+    });
+  };
+
+  const handlePhotoChanged = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const file = event.currentTarget.files && event.currentTarget.files[0];
+    if (file) {
+      innerUploadImage(file);
+    }
+  };
 
   return (
     <>
@@ -38,7 +71,14 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               <div className="flex-shrink-0 w-1/4 uppercase">Photo</div>
               <div className="flex-grow w-2/4 text-sm">You can&apos;t change the photo of this account</div>
               <div className="flex-grow flex justify-end">
-                <img src={authUser.photoURL} alt="" className="rounded-full h-14 w-14" />
+                <img
+                  src={authUser.photoURL}
+                  alt=""
+                  className="rounded-full h-14 w-14"
+                  onClick={handlePhotoClick}
+                  onKeyDown={handlePhotoKeyDown}
+                />
+                <input type="file" id="photoUpload" name="photoUpload" className="sr-only" ref={photoUploadRef} onChange={handlePhotoChanged} />
               </div>
             </div>
 
@@ -90,7 +130,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             <div className="p-4 flex items-stretch text-xs text-gray-500 hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase">Email</div>
               <div className="flex-grow w-2/4 text-sm text-gray-700">
-                <p>xxx@neuraltalks.io</p>
+                <p>{authUser?.email}</p>
                 <p>abcdvec.xxxx@gmail.com</p>
                 <p>abc@kth.se</p>
                 <p className="text-gray-500">+2 more</p>
