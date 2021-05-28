@@ -32,7 +32,6 @@ export function SignUp(): JSX.Element {
       setLoading(true);
       await createUser(data.email, data.password);
     } catch (error) {
-      // eslint-disable-next-line
       setErrors(convertFirebaseErrors(error));
     } finally {
       setLoading(false);
