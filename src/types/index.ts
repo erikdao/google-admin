@@ -3,6 +3,7 @@
  */
 export interface IErrorProps {
   target: string;
+  code?: string;
   message?: string | undefined;
 }
 

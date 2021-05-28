@@ -6,6 +6,27 @@ import GoogleLogo from 'src/assets/images/google_logo.svg';
 import { IErrorProps, TLoginCred } from 'src/types';
 import { LoginForm } from '../components/auth';
 
+/**
+ * @param error Firebase error, attributes include `code`, `message`
+ */
+function convertFirebaseErrors(error: any) {
+  const errors: IErrorProps[] = [];
+  const { code, message } = error;
+  if (code === 'auth/user-not-found') {
+    const err: IErrorProps = {
+      target: 'email', message,
+    };
+    errors.push(err);
+  }
+  if (code === 'auth/wrong-password') {
+    const err: IErrorProps = {
+      target: 'password', message,
+    };
+    errors.push(err);
+  }
+  return errors;
+}
+
 export function Login(): JSX.Element {
   const auth = firebase.auth();
   const [loading, setLoading] = useState(false);
@@ -15,8 +36,7 @@ export function Login(): JSX.Element {
     try {
       await auth.signInWithEmailAndPassword(email, password);
     } catch (error) {
-      // eslint-disable-next-line
-      console.log(error);
+      setErrors(convertFirebaseErrors(error));
     }
   };
 
