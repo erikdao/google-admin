@@ -16,6 +16,7 @@ import { AuthContext } from './contexts';
 import { Login, SignUp } from './pages';
 import DirectoryPage from './pages/DirectoryPage';
 import HomePage from './pages/HomePage';
+import LoadingPage from './pages/LoadingPage';
 import MyProfilePage from './pages/MyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -23,8 +24,12 @@ i18n.load('vi', messages);
 i18n.activate('vi');
 
 function Application(): JSX.Element {
-  const { authUser } = useContext(AuthContext);
-
+  const { authUser, loadingAuthUser } = useContext(AuthContext);
+  if (loadingAuthUser) {
+    return (
+      <LoadingPage />
+    );
+  }
   const isAuthenticated = () => authUser && authUser.email && authUser.email.length > 0;
 
   return (

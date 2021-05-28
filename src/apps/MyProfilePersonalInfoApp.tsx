@@ -69,7 +69,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             </div>
             <div className="p-4 flex items-stretch text-xs text-gray-500 hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase">Photo</div>
-              <div className="flex-grow w-2/4 text-sm">You can&apos;t change the photo of this account</div>
+              <div className="flex-grow w-2/4 text-sm">Click on the image and select a new file to update</div>
               <div className="flex-grow flex justify-end">
                 <img
                   src={authUser.photoURL}
@@ -131,8 +131,6 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               <div className="flex-shrink-0 w-1/4 uppercase">Email</div>
               <div className="flex-grow w-2/4 text-sm text-gray-700">
                 <p>{authUser?.email}</p>
-                <p>abcdvec.xxxx@gmail.com</p>
-                <p>abc@kth.se</p>
                 <p className="text-gray-500">+2 more</p>
               </div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">

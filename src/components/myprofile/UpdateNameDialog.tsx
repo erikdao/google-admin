@@ -13,16 +13,14 @@ export function UpdateNameDialog(props: IDialogProps): JSX.Element {
   const { isOpen, onClose } = props;
 
   const [loading, setLoading] = useState(false);
-  const [nameChanged, setNameChanged] = useState(false);
   const [displayName, setDisplayName] = useState(authUser?.displayName);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDisplayName(event.currentTarget.value);
-    setNameChanged(true);
   };
 
   const submitChange = async (): Promise<void> => {
-    if (nameChanged === false || displayName?.length === 0) {
+    if (displayName?.length === 0) {
       return;
     }
     setLoading(true);

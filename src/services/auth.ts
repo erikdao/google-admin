@@ -17,7 +17,6 @@ export const signOut = async (reload = true): Promise<void> => {
   const auth = firebase.auth();
   await auth.signOut();
   if (reload) {
-    window.location.href = '/';
     window.location.reload();
   }
 };
