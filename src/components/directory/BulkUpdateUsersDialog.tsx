@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { Dialog } from '@headlessui/react';
-import { UserCircleIcon } from '@heroicons/react/solid';
 import React, { useRef } from 'react';
 
 interface IDialogProps {

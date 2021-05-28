@@ -3,11 +3,17 @@ import { ChevronRightIcon } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
-import { UserContext } from 'src/contexts';
+import { AuthContext } from 'src/contexts';
 import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
 
+const dumbUser = {
+  email: null,
+  displayName: null,
+  photoURL: '',
+};
+
 export function MyProfilePersonalInfoApp(): JSX.Element {
-  const { user } = useContext(UserContext);
+  const authUser = useContext(AuthContext) || dumbUser;
   const [dialog, setDialog] = useState('');
 
   return (
@@ -30,13 +36,13 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               <div className="flex-shrink-0 w-1/4 uppercase">Photo</div>
               <div className="flex-grow w-2/4 text-sm">You can&apos;t change the photo of this account</div>
               <div className="flex-grow flex justify-end">
-                <img src={user.profileImage} alt="" className="rounded-full h-14 w-14" />
+                <img src={authUser.photoURL} alt="" className="rounded-full h-14 w-14" />
               </div>
             </div>
 
             <div className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Name</div>
-              <div className="flex-grow text-sm font-normal text-gray-700">{user.firstName} {user.lastName}</div>
+              <div className="flex-grow text-sm font-normal text-gray-700">{authUser.displayName}</div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
                 <ChevronRightIcon className="h-4 w-4 text-gray-700" />
               </div>

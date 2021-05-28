@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { ChevronRightIcon } from '@heroicons/react/outline';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import PrivacyCheckupScene from 'src/assets/icons/privacycheckup_scene_active.png';
 import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
-import { UserContext } from 'src/contexts';
-import PrivacyCheckupScene from 'src/assets/icons/privacycheckup_scene_active.png';
 
 export function MyProfileDataPersonalizationApp(): JSX.Element {
-  const { user } = useContext(UserContext);
   const [dialog, setDialog] = useState('');
 
   return (

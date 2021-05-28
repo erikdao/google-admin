@@ -1,1 +1,1 @@
-/*eslint-disable*/module.exports={messages:{"header.usermenu.profile":"Your profile","header.usermenu.settings":"Settings","header.usermenu.signout":"Signout"}};
+/*eslint-disable*/module.exports={messages:{"header.usermenu.profile":"Your profile","header.usermenu.settings":"Settings","header.usermenu.signout":"Sign out"}};

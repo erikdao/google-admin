@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import { Dialog } from '@headlessui/react';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 interface IDialogProps {
   isOpen?: boolean;

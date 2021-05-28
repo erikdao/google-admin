@@ -13,14 +13,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/common/Header.tsx:89
+#: src/components/common/Header.tsx:104
 msgid "header.usermenu.profile"
 msgstr "Your profile"
 
-#: src/components/common/Header.tsx:97
+#: src/components/common/Header.tsx:112
 msgid "header.usermenu.settings"
 msgstr "Settings"
 
-#: src/components/common/Header.tsx:106
+#: src/components/common/Header.tsx:121
 msgid "header.usermenu.signout"
-msgstr "Signout"
+msgstr "Sign out"

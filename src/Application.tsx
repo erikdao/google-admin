@@ -1,6 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
-import React, { useEffect, useState } from 'react';
+import {
+  FirebaseAuthConsumer, FirebaseAuthProvider,
+} from '@react-firebase/auth';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import React, { ReactNode, useState } from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -11,71 +17,68 @@ import { messages } from 'src/locales/en/contents.js';
 import { DirectoryGroupApp, DirectoryUserApp, MyProfilePersonalInfoApp } from './apps';
 import { MyProfileDataPersonalizationApp } from './apps/MyProfileDataPersonalizationApp';
 import { MyProfileHomeApp } from './apps/MyProfileHomeApp';
-import { UserContext } from './contexts';
+import { firebaseConfig } from './config';
+import { AuthContext } from './contexts';
 import { Login, SignUp } from './pages';
 import DirectoryPage from './pages/DirectoryPage';
 import HomePage from './pages/HomePage';
 import MyProfilePage from './pages/MyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
-import { isAuthenticated } from './services/auth';
-import { TUser } from './types';
 
-const sampleUser: TUser = {
-  email: 'cuong@neuraltalks.io',
-  firstName: 'Erik',
-  lastName: 'Dao',
-  profileImage: 'https://avatars.githubusercontent.com/u/26970731',
-};
+i18n.load('vi', messages);
+i18n.activate('vi');
 
 function Application(): JSX.Element {
-  const [user, setUser] = useState<TUser>(sampleUser);
+  const [authUser, setAuthUser] = useState(null);
 
-  // In the near future once we have a proper authentication system,
-  // the logic of this function should be moved out of the component
-  const logout = () => {
-    setUser({ email: null });
-    window.location.reload();
-  };
+  const authRoutes = (): ReactNode => (
+    <AuthContext.Provider value={authUser}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="directory" element={<DirectoryPage />}>
+          <Route path="users" element={<DirectoryUserApp />} />
+          <Route path="groups" element={<DirectoryGroupApp />} />
+          <Route path="units" element={<DirectoryUserApp />} />
+          <Route path="calendarresources" element={<DirectoryUserApp />} />
+          <Route path="appsettings" element={<DirectoryUserApp />} />
+        </Route>
+        <Route path="my-profile" element={<MyProfilePage />}>
+          <Route path="/" element={<MyProfileHomeApp />} />
+          <Route path="personal-information" element={<MyProfilePersonalInfoApp />} />
+          <Route path="data-and-personalization" element={<MyProfileDataPersonalizationApp />} />
+        </Route>
+        <Route path="auth/*" element={<Navigate to="/" />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </AuthContext.Provider>
+  );
 
-  useEffect(() => {
-    i18n.load('vi', messages);
-    i18n.activate('vi');
-  }, []);
+  const unauthRoutes = (): ReactNode => (
+    <Routes>
+      <Route path="/" element={<Navigate to="/auth/login" />} />
+      <Route path="/auth/login" element={<Login />} />
+      <Route path="/auth/signup" element={<SignUp />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
 
   return (
     <I18nProvider i18n={i18n}>
-      <UserContext.Provider value={{ user, logout }}>
+      <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
         <div className="w-screen h-screen overflow-hidden bg-bgray-50">
           <BrowserRouter>
-            {isAuthenticated(user) ? (
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="directory" element={<DirectoryPage />}>
-                  <Route path="users" element={<DirectoryUserApp />} />
-                  <Route path="groups" element={<DirectoryGroupApp />} />
-                  <Route path="units" element={<DirectoryUserApp />} />
-                  <Route path="calendarresources" element={<DirectoryUserApp />} />
-                  <Route path="appsettings" element={<DirectoryUserApp />} />
-                </Route>
-                <Route path="my-profile" element={<MyProfilePage />}>
-                  <Route path="/" element={<MyProfileHomeApp />} />
-                  <Route path="personal-information" element={<MyProfilePersonalInfoApp />} />
-                  <Route path="data-and-personalization" element={<MyProfileDataPersonalizationApp />} />
-                </Route>
-                <Route path="auth/*" element={<Navigate to="/" />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            ) : (
-              <Routes>
-                <Route path="/" element={<Navigate to="/auth/login" />} />
-                <Route path="/auth/login" element={<Login />} />
-                <Route path="/auth/signup" element={<SignUp />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            )}
+            <FirebaseAuthConsumer>
+              {({ isSignedIn, user }) => {
+                if (isSignedIn === true) {
+                  setAuthUser(user);
+                  return authRoutes();
+                }
+                return unauthRoutes();
+              }}
+            </FirebaseAuthConsumer>
           </BrowserRouter>
         </div>
-      </UserContext.Provider>
+      </FirebaseAuthProvider>
     </I18nProvider>
   );
 }

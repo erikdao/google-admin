@@ -1,9 +1,4 @@
-import { Location, State } from 'history';
 import React from 'react';
-
-function useSearch(location: Location<State>) {
-  return new URLSearchParams(location.search);
-}
 
 export function DirectoryGroupApp(): JSX.Element {
   return (

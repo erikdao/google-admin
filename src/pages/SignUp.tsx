@@ -50,7 +50,7 @@ export function SignUp(): JSX.Element {
       <footer className="relative z-10 flex-none text-sm text-center p-4 sm:px-6 lg:px-8">
         <div className="text-gray-900 sm:flex sm:items-center sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <p>Already have an account?</p>
-          <Link to="/login" className="rounded-md border border-gray-300 hover:border-gray-400 py-2 px-10 font-medium flex items-center justify-center">Log in</Link>
+          <Link to="/auth/login" className="rounded-md border border-gray-300 hover:border-gray-400 py-2 px-10 font-medium flex items-center justify-center">Log in</Link>
         </div>
       </footer>
     </div>

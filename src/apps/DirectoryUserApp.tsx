@@ -1,5 +1,4 @@
 import { PlusIcon, SwitchHorizontalIcon, UserIcon } from '@heroicons/react/solid';
-import clsx from 'clsx';
 import { Location, State } from 'history';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';

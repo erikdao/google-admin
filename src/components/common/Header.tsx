@@ -1,16 +1,26 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { BellIcon, SearchCircleIcon } from '@heroicons/react/solid';
+import { Trans } from '@lingui/macro';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Trans } from '@lingui/macro';
 import * as contexts from 'src/contexts';
 
-export function Header(): JSX.Element {
-  const { user, logout } = useContext(contexts.UserContext);
+const dumbUser = {
+  email: null,
+  displayName: null,
+  photoURL: '',
+};
 
-  const handleSignout = (event: React.MouseEvent<HTMLElement>) => {
+export function Header(): JSX.Element {
+  const auth = firebase.auth();
+  const authUser = useContext(contexts.AuthContext) || dumbUser;
+
+  const handleSignout = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
-    logout();
+    await auth.signOut();
+    window.location.reload();
   };
 
   return (
@@ -42,6 +52,7 @@ export function Header(): JSX.Element {
         </div>
 
         <div className="flex-1 flex-shrink-0 flex-grow-0 ml-4 flex items-center">
+          {/* Notification menu */}
           <Popover className="relative">
             <Popover.Button className="flex-shrink-0 rounded-full p-1 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-600">
               <BellIcon className="h-6 w-6" />
@@ -54,6 +65,9 @@ export function Header(): JSX.Element {
               </div>
             </Popover.Panel>
           </Popover>
+          {/* End: Notification menu */}
+
+          {/* User menu */}
           <Menu as="div" className="inline-block text-left relative w-8 ml-4">
             {({ open }) => (
               <>
@@ -62,8 +76,8 @@ export function Header(): JSX.Element {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src={user.profileImage}
-                      alt={`${user.firstName} ${user.lastName}`}
+                      src={authUser.photoURL}
+                      alt={`${authUser.displayName}`}
                     />
                   </Menu.Button>
                 </div>
@@ -81,9 +95,12 @@ export function Header(): JSX.Element {
                     static
                     className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
                   >
-                    <div className="px-4 py-3">
-                      <p className="text-sm text-gray-600">Signed in as</p>
-                      <p className="text-sm font-medium text-gray-900 truncate">{user.email}</p>
+                    <div className="px-4 py-3 flex items-start">
+                      <img src={authUser.photoURL} alt={`${authUser.displayName}`} className="h-10 w-10 rounded-full mr-2" />
+                      <div>
+                        <p className="text-sm text-gray-600">{authUser.displayName}</p>
+                        <p className="text-sm font-medium text-gray-900 truncate">{authUser.email}</p>
+                      </div>
                     </div>
                     <div className="py-1">
                       <Menu.Item>

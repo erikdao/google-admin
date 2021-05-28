@@ -5,15 +5,20 @@ import SecurityIcon from 'src/assets/icons/securitycheckup_green_96x96.png';
 import StorageIcon from 'src/assets/icons/googleonestorage_spot_72x72.png';
 import PrivacyIcon from 'src/assets/icons/privacycheckup_initial_active_96x96.png';
 
+const dumbUser = {
+  photoURL: '',
+  displayName: null,
+};
+
 export function MyProfileHomeApp(): JSX.Element {
-  const { user } = useContext(contexts.UserContext);
+  const authUser = useContext(contexts.AuthContext) || dumbUser;
 
   return (
     <div className="flex-1 flex-grow h-full flex flex-col overflow-x-hidden overflow-y-auto p-6 bg-white">
       <div className="flex-1 flex flex-col items-center max-w-7xl md:max-w-4xl mx-auto">
         <div className="flex-0 flex flex-col items-center justify-center p-4 space-y-4 pt-8 w-full">
-          <img src={user.profileImage} alt="" className="h-24 w-24 bg-gray-100 border-4 border-gray-200 rounded-full" />
-          <h1 className="font-normal text-3xl text-gray-700">Welcome, {user.firstName}</h1>
+          <img src={authUser.photoURL} alt="" className="h-24 w-24 bg-gray-100 border-4 border-gray-200 rounded-full" />
+          <h1 className="font-normal text-3xl text-gray-700">Welcome, {authUser.displayName}</h1>
           <p className="text-base text-gray-500">Manage your info, privacy, and security to make Google work better for you. <a href="/" className="text-red-700">Learn more</a></p>
         </div>
 

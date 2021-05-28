@@ -37,7 +37,6 @@ function validateCreds(creds: TSignUpCred): IErrorProps[] {
     errors.push({ target: 'password', message: 'Password confirm does not match' });
     errors.push({ target: 'passwordConfirm', message: 'Password confirm does not match' });
   }
-  console.log('errors', errors);
   return errors;
 }
 
