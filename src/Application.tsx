@@ -6,7 +6,7 @@ import {
 } from '@react-firebase/auth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -31,54 +31,51 @@ i18n.activate('vi');
 function Application(): JSX.Element {
   const [authUser, setAuthUser] = useState(null);
 
-  const authRoutes = (): ReactNode => (
-    <AuthContext.Provider value={authUser}>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="directory" element={<DirectoryPage />}>
-          <Route path="users" element={<DirectoryUserApp />} />
-          <Route path="groups" element={<DirectoryGroupApp />} />
-          <Route path="units" element={<DirectoryUserApp />} />
-          <Route path="calendarresources" element={<DirectoryUserApp />} />
-          <Route path="appsettings" element={<DirectoryUserApp />} />
-        </Route>
-        <Route path="my-profile" element={<MyProfilePage />}>
-          <Route path="/" element={<MyProfileHomeApp />} />
-          <Route path="personal-information" element={<MyProfilePersonalInfoApp />} />
-          <Route path="data-and-personalization" element={<MyProfileDataPersonalizationApp />} />
-        </Route>
-        <Route path="auth/*" element={<Navigate to="/" />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </AuthContext.Provider>
-  );
-
-  const unauthRoutes = (): ReactNode => (
-    <Routes>
-      <Route path="/" element={<Navigate to="/auth/login" />} />
-      <Route path="/auth/login" element={<Login />} />
-      <Route path="/auth/signup" element={<SignUp />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  );
-
   return (
     <I18nProvider i18n={i18n}>
       <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
-        <div className="w-screen h-screen overflow-hidden bg-bgray-50">
-          <BrowserRouter>
-            <FirebaseAuthConsumer>
-              {({ isSignedIn, user }) => {
-                if (isSignedIn === true) {
-                  setAuthUser(user);
-                  return authRoutes();
-                }
-                return unauthRoutes();
-              }}
-            </FirebaseAuthConsumer>
-          </BrowserRouter>
-        </div>
+        <FirebaseAuthConsumer>
+          {({ isSignedIn, user }) => {
+            if (isSignedIn === true) {
+              setAuthUser(user);
+            } else {
+              setAuthUser(null);
+            }
+          }}
+        </FirebaseAuthConsumer>
       </FirebaseAuthProvider>
+      <div className="w-screen h-screen overflow-hidden bg-bgray-50">
+        <AuthContext.Provider value={authUser}>
+          <BrowserRouter>
+            {authUser !== null ? (
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="directory" element={<DirectoryPage />}>
+                  <Route path="users" element={<DirectoryUserApp />} />
+                  <Route path="groups" element={<DirectoryGroupApp />} />
+                  <Route path="units" element={<DirectoryUserApp />} />
+                  <Route path="calendarresources" element={<DirectoryUserApp />} />
+                  <Route path="appsettings" element={<DirectoryUserApp />} />
+                </Route>
+                <Route path="my-profile" element={<MyProfilePage />}>
+                  <Route path="/" element={<MyProfileHomeApp />} />
+                  <Route path="personal-information" element={<MyProfilePersonalInfoApp />} />
+                  <Route path="data-and-personalization" element={<MyProfileDataPersonalizationApp />} />
+                </Route>
+                <Route path="auth/*" element={<Navigate to="/" />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            ) : (
+              <Routes>
+                <Route path="/" element={<Navigate to="/auth/login" />} />
+                <Route path="/auth/login" element={<Login />} />
+                <Route path="/auth/signup" element={<SignUp />} />
+                <Route path="*" element={<Navigate to="/auth/login" />} />
+              </Routes>
+            )}
+          </BrowserRouter>
+        </AuthContext.Provider>
+      </div>
     </I18nProvider>
   );
 }

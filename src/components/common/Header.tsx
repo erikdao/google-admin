@@ -1,11 +1,10 @@
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { BellIcon, SearchCircleIcon } from '@heroicons/react/solid';
 import { Trans } from '@lingui/macro';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import * as contexts from 'src/contexts';
+import { signOut } from 'src/services/auth';
 
 const dumbUser = {
   email: null,
@@ -14,13 +13,11 @@ const dumbUser = {
 };
 
 export function Header(): JSX.Element {
-  const auth = firebase.auth();
   const authUser = useContext(contexts.AuthContext) || dumbUser;
 
   const handleSignout = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
-    await auth.signOut();
-    window.location.reload();
+    await signOut();
   };
 
   return (

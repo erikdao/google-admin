@@ -1,23 +1,42 @@
+import 'firebase/auth';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleLogo from 'src/assets/images/google_logo.svg';
+import { createUser } from 'src/services/auth';
 import { IErrorProps, TLoginCred } from 'src/types';
-
 import { SignUpForm } from '../components/auth';
+
+/**
+ * @param error Firebase error, attributes include `code`, `message`
+ */
+function convertFirebaseErrors(error: any) {
+  const errors: IErrorProps[] = [];
+  const { code, message } = error;
+  if (code === 'auth/email-already-in-use') {
+    const err: IErrorProps = {
+      target: 'email', message, code,
+    };
+    errors.push(err);
+  }
+  return errors;
+}
 
 export function SignUp(): JSX.Element {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<IErrorProps[]>([]);
 
-  const sleep = () => new Promise((resolve) => setTimeout(resolve, 3000));
-
   const handleSubmit = async (data: TLoginCred): Promise<void> => {
     setErrors([]);
-    // eslint-disable-next-line
-    setLoading(true);
-    await sleep();
-    // setErrors([{ target: 'email' }, { target: 'password' }]);
-    setLoading(false);
+    try {
+      setLoading(true);
+      await createUser(data.email, data.password);
+    } catch (error) {
+      // eslint-disable-next-line
+      console.log('error', error);
+      setErrors(convertFirebaseErrors(error));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -38,7 +57,7 @@ export function SignUp(): JSX.Element {
             <div className="w-full pt-6">
               {errors && errors.length > 0 && (
                 <p className="text-center font-bold text-red-500 mb-6">
-                  These credentials don&apos;t match our records.
+                  {errors[0].message}
                 </p>
               )}
               <SignUpForm errors={errors} loading={loading} onSubmit={handleSubmit} />
