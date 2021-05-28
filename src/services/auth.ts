@@ -1,10 +1,21 @@
-import { TUser } from 'src/types';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 /**
- * Simple logic to verify if a user is authenticated
- * @param user TUser - Maybe a user
- * @returns whether the user is authenticated
+ * Invoke Firebase SDK to create a new user
+ * @param email string
+ * @param password
  */
-export function isAuthenticated(user: TUser): boolean {
-  return (user !== null && user.email !== null);
-}
+export const createUser = async (email: string, password: string): Promise<void> => {
+  const auth = firebase.auth();
+  await auth.createUserWithEmailAndPassword(email, password);
+};
+
+export const signOut = async (reload = true): Promise<void> => {
+  const auth = firebase.auth();
+  await auth.signOut();
+  if (reload) {
+    window.location.href = '/';
+    window.location.reload();
+  }
+};
