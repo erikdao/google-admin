@@ -6,6 +6,7 @@ export interface IAuthUser {
   emailVerified?: boolean;
   displayName?: string;
   photoURL?: string;
+  phoneNumber?: string;
 }
 
 export type TAuthUserPayload = Partial<IAuthUser>

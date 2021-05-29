@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { ChevronRightIcon } from '@heroicons/react/outline';
 import React, { createRef, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import AboutMeScene from 'src/assets/icons/aboutme_scene.png';
 import { PageTitle } from 'src/components/common/PageTitle';
 import { BirthdayDialog } from 'src/components/myprofile/BirthdayDialog';
 import { UpdateNameDialog } from 'src/components/myprofile/UpdateNameDialog';
+import { UpdatePhoneDialog } from 'src/components/myprofile/UpdatePhoneDialog';
 import { DialogType } from 'src/constants';
 import { AuthContext } from 'src/contexts';
 import { updateUserProfile } from 'src/services/auth';
@@ -74,7 +76,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
                 <img
                   src={authUser.photoURL}
                   alt=""
-                  className="rounded-full h-14 w-14"
+                  className="rounded-full h-14 w-14 cursor-pointer border-2 border-gray-100"
                   onClick={handlePhotoClick}
                   onKeyDown={handlePhotoKeyDown}
                 />
@@ -87,7 +89,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
               <div className="flex-grow text-sm font-normal text-gray-700">{authUser.displayName}</div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
                 <ChevronRightIcon
-                  className="h-4 w-4 text-gray-700"
+                  className="h-4 w-4 text-gray-700 cursor-pointer"
                   onClick={() => setDialog(DialogType.MY_PROFILE_UPDATE_NAME)}
                 />
               </div>
@@ -141,11 +143,13 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             <div className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100">
               <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Phone</div>
               <div className="flex-grow text-sm font-normal text-gray-700">
-                <p>076766xxxx</p>
-                <p>+84328xxxxxx</p>
+                {authUser?.phoneNumber}
               </div>
               <div className="flex-grow-0 flex-shrink-0 w-4 flex items-center justify-center">
-                <ChevronRightIcon className="h-4 w-4 text-gray-700" />
+                <ChevronRightIcon
+                  className="h-4 w-4 text-gray-700 cursor-pointer"
+                  onClick={() => setDialog(DialogType.MY_PROFILE_UPDATE_PHONE)}
+                />
               </div>
             </div>
           </div>
@@ -164,7 +168,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             </div>
 
             <div className="p-4 block text-blue-500 text-left text-sm hover:bg-gray-100 cursor-pointer flex-grow-0 flex-shrink-0">
-              <a href="/">Go to About me</a>
+              <Link to="/my-profile">Go to About me</Link>
             </div>
           </div>
           {/* Choose what others see  */}
@@ -173,6 +177,7 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
 
       {dialog === DialogType.MY_PROFILE_UPDATE_BIRTHDAY && <BirthdayDialog isOpen onClose={() => setDialog('')} />}
       {dialog === DialogType.MY_PROFILE_UPDATE_NAME && <UpdateNameDialog isOpen onClose={() => setDialog('')} />}
+      {dialog === DialogType.MY_PROFILE_UPDATE_PHONE && <UpdatePhoneDialog isOpen onClose={() => setDialog('')} />}
     </>
   );
 }

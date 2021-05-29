@@ -9,7 +9,7 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import { messages } from 'src/locales/vi/contents.js';
+import { messages } from 'src/locales/en/contents.js';
 import { DirectoryGroupApp, DirectoryUserApp, MyProfilePersonalInfoApp } from './apps';
 import { MyProfileHomeApp } from './apps/MyProfileHomeApp';
 import { AuthContext } from './contexts';
@@ -20,8 +20,8 @@ import LoadingPage from './pages/LoadingPage';
 import MyProfilePage from './pages/MyProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
-i18n.load('vi', messages);
-i18n.activate('vi');
+i18n.load('en', messages);
+i18n.activate('en');
 
 function Application(): JSX.Element {
   const { authUser, loadingAuthUser } = useContext(AuthContext);

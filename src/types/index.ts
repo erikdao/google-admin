@@ -7,6 +7,10 @@ export interface IErrorProps {
   message?: string | undefined;
 }
 
+export interface IClassName {
+  className?: string;
+}
+
 export function getErrorsByField(errors: IErrorProps[], key: string): IErrorProps[] {
   return errors.filter((e: IErrorProps) => e.target === key);
 }
@@ -44,4 +48,5 @@ export type TUser = {
   firstName?: string;
   lastName?: string;
   profileImage?: string;
+  phoneNumber?: string;
 };

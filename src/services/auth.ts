@@ -36,6 +36,7 @@ export const convertFirebaseUserToAuthUser = (user: firebase.User | null): IAuth
     emailVerified: user.emailVerified,
     displayName: user.displayName || '',
     photoURL: user.photoURL || '',
+    phoneNumber: user.phoneNumber || '',
   };
   return authUser;
 };

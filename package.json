@@ -30,7 +30,8 @@
   },
   "scripts": {
     "start": "REACT_APP_NODE_ENV=dev craco start",
-    "build": "craco build",
+    "build:dev": "REACT_APP_NODE_ENV=dev craco build",
+    "build:prod": "REACT_APP_NODE_ENV=production NODE_ENV=production craco build",
     "test": "craco test",
     "lingui:extract": "lingui extract",
     "lingui:compile": "lingui compile",
