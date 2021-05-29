@@ -33,6 +33,46 @@ msgstr "Log in"
 msgid "login.withgoogle"
 msgstr "Sign in with Google"
 
+#: src/apps/MyProfilePersonalInfoApp.tsx:112
+msgid "myprofile.personalinfo.addbirthday"
+msgstr "Thêm ngày sinh"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:76
+msgid "myprofile.personalinfo.basicinfodescription"
+msgstr "Some info may be visible to other people using Google services."
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:74
+msgid "myprofile.personalinfo.basicinfotitle"
+msgstr "Basic info"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:111
+msgid "myprofile.personalinfo.birthdaylabel"
+msgstr "Birthday"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:95
+msgid "myprofile.personalinfo.namelabel"
+msgstr "Name"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:67
+msgid "myprofile.personalinfo.pagedescription"
+msgstr "Basic info, like your name and photo, that you use on Google services"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:64
+msgid "myprofile.personalinfo.pagetitle"
+msgstr "Personal info"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:122
+msgid "myprofile.personalinfo.passwordlabel"
+msgstr "Password"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:81
+msgid "myprofile.personalinfo.photodescription"
+msgstr "Click on the image and select a new file to update"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:80
+msgid "myprofile.personalinfo.photolabel"
+msgstr "Photo"
+
 #: src/components/myprofile/MyProfileSidebar.tsx:29
 msgid "myprofile.sidebar.backtohome"
 msgstr "Back to home"

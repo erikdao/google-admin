@@ -33,6 +33,46 @@ msgstr "Đăng nhập"
 msgid "login.withgoogle"
 msgstr "Đăng nhập bằng Google"
 
+#: src/apps/MyProfilePersonalInfoApp.tsx:112
+msgid "myprofile.personalinfo.addbirthday"
+msgstr "Add birthday"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:76
+msgid "myprofile.personalinfo.basicinfodescription"
+msgstr "Người dùng sử dụng các dịch vụ của Google có thể nhìn thấy một sô thông tin dưới đây."
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:74
+msgid "myprofile.personalinfo.basicinfotitle"
+msgstr "Thông tin cơ bản"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:111
+msgid "myprofile.personalinfo.birthdaylabel"
+msgstr "Sinh nhật"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:95
+msgid "myprofile.personalinfo.namelabel"
+msgstr "Tên"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:67
+msgid "myprofile.personalinfo.pagedescription"
+msgstr "Thông tin cơ bản, nhưng tên và ảnh đại diện, mà bạn đang dùng trong các dịch vụ của Google"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:64
+msgid "myprofile.personalinfo.pagetitle"
+msgstr "Thông tin cá nhân"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:122
+msgid "myprofile.personalinfo.passwordlabel"
+msgstr "Mật khẩu"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:81
+msgid "myprofile.personalinfo.photodescription"
+msgstr "Để thay ảnh mới, nhấp vào hình bên và chọn một tệp để tải lên"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:80
+msgid "myprofile.personalinfo.photolabel"
+msgstr "Ảnh đại diện"
+
 #: src/components/myprofile/MyProfileSidebar.tsx:29
 msgid "myprofile.sidebar.backtohome"
 msgstr "Trờ về Trang chủ"

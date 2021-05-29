@@ -33,6 +33,46 @@ msgstr ""
 msgid "login.withgoogle"
 msgstr ""
 
+#: src/apps/MyProfilePersonalInfoApp.tsx:112
+msgid "myprofile.personalinfo.addbirthday"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:76
+msgid "myprofile.personalinfo.basicinfodescription"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:74
+msgid "myprofile.personalinfo.basicinfotitle"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:111
+msgid "myprofile.personalinfo.birthdaylabel"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:95
+msgid "myprofile.personalinfo.namelabel"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:67
+msgid "myprofile.personalinfo.pagedescription"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:64
+msgid "myprofile.personalinfo.pagetitle"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:122
+msgid "myprofile.personalinfo.passwordlabel"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:81
+msgid "myprofile.personalinfo.photodescription"
+msgstr ""
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:80
+msgid "myprofile.personalinfo.photolabel"
+msgstr ""
+
 #: src/components/myprofile/MyProfileSidebar.tsx:29
 msgid "myprofile.sidebar.backtohome"
 msgstr ""
