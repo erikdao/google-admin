@@ -49,6 +49,18 @@ msgstr "Basic info"
 msgid "myprofile.personalinfo.birthdaylabel"
 msgstr "Birthday"
 
+#: src/apps/MyProfilePersonalInfoApp.tsx:143
+msgid "myprofile.personalinfo.contactinfo.emaillabel"
+msgstr "Email"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:156
+msgid "myprofile.personalinfo.contactinfo.phonelabel"
+msgstr "Phone"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:138
+msgid "myprofile.personalinfo.contactinfo.sectionlabel"
+msgstr "Contact info"
+
 #: src/apps/MyProfilePersonalInfoApp.tsx:95
 msgid "myprofile.personalinfo.namelabel"
 msgstr "Name"

@@ -49,6 +49,18 @@ msgstr "Thông tin cơ bản"
 msgid "myprofile.personalinfo.birthdaylabel"
 msgstr "Sinh nhật"
 
+#: src/apps/MyProfilePersonalInfoApp.tsx:143
+msgid "myprofile.personalinfo.contactinfo.emaillabel"
+msgstr "Email"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:156
+msgid "myprofile.personalinfo.contactinfo.phonelabel"
+msgstr "Số điện thoại"
+
+#: src/apps/MyProfilePersonalInfoApp.tsx:138
+msgid "myprofile.personalinfo.contactinfo.sectionlabel"
+msgstr "Thông tin liên lạc"
+
 #: src/apps/MyProfilePersonalInfoApp.tsx:95
 msgid "myprofile.personalinfo.namelabel"
 msgstr "Tên"

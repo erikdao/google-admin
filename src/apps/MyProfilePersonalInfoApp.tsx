@@ -134,10 +134,14 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
           {/* Contact info */}
           <div className="mt-8 rounded-lg border border-gray-300 w-full divide-y divide-gray-200">
             <div className="p-4 divide-y-skip">
-              <h3 className="text-2xl text-gray-700">Contact info</h3>
+              <h3 className="text-2xl text-gray-700">
+                <Trans id="myprofile.personalinfo.contactinfo.sectionlabel" />
+              </h3>
             </div>
             <div className="p-4 flex items-stretch text-xs text-gray-500 hover:cursor-pointer hover:bg-gray-100">
-              <div className="flex-shrink-0 w-1/4 uppercase">Email</div>
+              <div className="flex-shrink-0 w-1/4 uppercase">
+                <Trans id="myprofile.personalinfo.contactinfo.emaillabel" />
+              </div>
               <div className="flex-grow w-2/4 text-sm text-gray-700">
                 <p>{authUser?.email}</p>
                 <p className="text-gray-500">+2 more</p>
@@ -148,7 +152,9 @@ export function MyProfilePersonalInfoApp(): JSX.Element {
             </div>
 
             <div className="p-4 flex items-stretch text-xs  hover:cursor-pointer hover:bg-gray-100">
-              <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">Phone</div>
+              <div className="flex-shrink-0 w-1/4 uppercase text-gray-500">
+                <Trans id="myprofile.personalinfo.contactinfo.phonelabel" />
+              </div>
               <div className="flex-grow text-sm font-normal text-gray-700">
                 {authUser?.phoneNumber}
               </div>
